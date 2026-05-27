@@ -1,0 +1,86 @@
+<div class="detail-page">
+  <button class="back-btn" (click)="goBack()">← Volver</button>
+
+  @if (loading()) {
+    <div class="state-msg">Cargando datos del Pokémon...</div>
+  }
+
+  @if (error()) {
+    <div class="state-msg error">Error al cargar el Pokémon. Intenta de nuevo.</div>
+  }
+
+  @if (detail(); as d) {
+    <div class="poke-header">
+      <span>#{{ padId(d.pokemon.id) }}</span>
+      <span class="poke-header-name">{{ d.pokemon.name }}</span>
+    </div>
+
+    <div class="poke-card">
+      <div class="poke-layout">
+        <div class="img-col">
+          <div class="img-wrap">
+            <img
+              [src]="d.animatedImg || d.staticImg"
+              [alt]="d.pokemon.name"
+              (error)="$any($event.target).src = d.staticImg"
+            />
+          </div>
+          <div class="poke-name">{{ d.pokemon.name }}</div>
+          <div class="poke-id">#{{ padId(d.pokemon.id) }}</div>
+          <div class="types-row">
+            @for (type of types; track type) {
+              <span class="type-badge" [class]="type">{{ type }}</span>
+            }
+          </div>
+          <audio controls preload="none">
+            <source [src]="d.cryUrl" type="audio/ogg" />
+          </audio>
+        </div>
+
+        <div class="stats-col">
+          <h3 class="col-title">Stats base</h3>
+          @for (stat of displayStats; track stat.stat.name) {
+            <div class="stat-row">
+              <span class="stat-label">{{ statLabels[stat.stat.name] }}</span>
+              <div class="stat-bar-bg">
+                <div
+                  class="stat-bar"
+                  [style.width.%]="statPct(stat.base_stat)"
+                  [style.background]="statColors[stat.stat.name]"
+                ></div>
+              </div>
+              <span class="stat-val" [style.color]="statColors[stat.stat.name]">
+                {{ stat.base_stat }}
+              </span>
+            </div>
+          }
+        </div>
+
+        <div class="info-col">
+          <h3 class="col-title">Info</h3>
+          <div class="info-row"><span class="info-key">Altura</span><span class="info-val">{{ heightM }} m</span></div>
+          <div class="info-row"><span class="info-key">Peso</span><span class="info-val">{{ weightKg }} kg</span></div>
+          <div class="info-row"><span class="info-key">Género</span><span class="info-val">{{ d.gender }}</span></div>
+          <div class="info-row"><span class="info-key">Categoría</span><span class="info-val">{{ d.category }}</span></div>
+          <div class="info-row"><span class="info-key">Habilidad</span><span class="info-val">{{ d.abilityName }}</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="evos-section">
+      <div class="evos-title">Evoluciones</div>
+      @if (evolutions().length === 0 && !loading()) {
+        <p class="no-evos">No tiene evoluciones</p>
+      }
+      <div class="evos-grid">
+        @for (evo of evolutions(); track evo.pokemon.id) {
+          <app-evolution-card
+            [detail]="evo"
+            (navigate)="navigateTo($event)"
+          />
+        }
+      </div>
+    </div>
+  }
+</div>

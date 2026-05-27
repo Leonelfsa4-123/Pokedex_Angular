@@ -1,0 +1,52 @@
+<div class="evo-card" (click)="navigate.emit(detail.pokemon.name)">
+  <div class="evo-layout">
+
+    <div class="evo-img-col">
+      <img
+        class="evo-img"
+        [src]="detail.animatedImg || detail.staticImg"
+        [alt]="detail.pokemon.name"
+        (error)="$any($event.target).src = detail.staticImg"
+      />
+      <div class="evo-id">#{{ padId(detail.pokemon.id) }}</div>
+      <div class="evo-name">{{ detail.pokemon.name }}</div>
+      <div class="types-row">
+        @for (type of types; track type) {
+          <span class="type-badge" [class]="type">{{ type }}</span>
+        }
+      </div>
+      <audio controls preload="none" (click)="$event.stopPropagation()">
+        <source [src]="detail.cryUrl" type="audio/ogg" />
+      </audio>
+    </div>
+
+    <div class="evo-stats-col">
+      <div class="col-title">Stats</div>
+      @for (stat of displayStats; track stat.stat.name) {
+        <div class="stat-row">
+          <span class="stat-label">{{ statLabels[stat.stat.name] }}</span>
+          <div class="stat-bar-bg">
+            <div
+              class="stat-bar"
+              [style.width.%]="statPct(stat.base_stat)"
+              [style.background]="statColors[stat.stat.name]"
+            ></div>
+          </div>
+          <span class="stat-val" [style.color]="statColors[stat.stat.name]">
+            {{ stat.base_stat }}
+          </span>
+        </div>
+      }
+    </div>
+
+    <div class="evo-info-col">
+      <div class="col-title">Info</div>
+      <div class="info-row"><span class="info-key">Altura</span><span class="info-val">{{ heightM }} m</span></div>
+      <div class="info-row"><span class="info-key">Peso</span><span class="info-val">{{ weightKg }} kg</span></div>
+      <div class="info-row"><span class="info-key">Género</span><span class="info-val">{{ detail.gender }}</span></div>
+      <div class="info-row"><span class="info-key">Categoría</span><span class="info-val">{{ detail.category }}</span></div>
+      <div class="info-row"><span class="info-key">Habilidad</span><span class="info-val">{{ detail.abilityName }}</span></div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,137 @@
+.evo-card {
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+  flex: 1;
+  min-width: 220px;
+  max-width: 400px;
+
+  &:hover {
+    border-color: var(--yellow);
+    transform: translateY(-2px);
+  }
+}
+
+.evo-layout {
+  display: grid;
+  grid-template-columns: 110px 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+
+  @media (max-width: 500px) {
+    grid-template-columns: 90px 1fr 1fr;
+  }
+}
+
+.evo-img-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.evo-img {
+  width: 84px;
+  height: 84px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.evo-id {
+  font-size: 0.62rem;
+  color: var(--gray);
+  opacity: 0.5;
+}
+
+.evo-name {
+  font-weight: 800;
+  font-size: 0.82rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.types-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+audio {
+  width: 90px !important;
+  margin-top: 6px;
+}
+
+.col-title {
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 6px;
+  letter-spacing: 0.06em;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.62rem;
+  color: var(--gray);
+  opacity: 0.7;
+  width: 44px;
+  flex-shrink: 0;
+}
+
+.stat-bar-bg {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.stat-bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+.stat-val {
+  font-size: 0.62rem;
+  font-weight: 700;
+  width: 24px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.evo-stats-col, .evo-info-col {
+  padding-top: 2px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  margin-bottom: 5px;
+}
+
+.info-key {
+  color: var(--gray);
+  opacity: 0.7;
+}
+
+.info-val {
+  font-weight: 700;
+  text-transform: capitalize;
+  text-align: right;
+  max-width: 80px;
+  word-break: break-word;
+}

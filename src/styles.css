@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --red: #E3350D;
+  --red2: #FF6B4A;
+  --yellow: #FFCB05;
+  --dark: #1a1a2e;
+  --card: #16213e;
+  --surface: #0f3460;
+  --white: #ffffff;
+  --gray: #ccd6f6;
+  --green: #4FC978;
+  --blue: #6CB4E4;
+  --purple: #C77DFF;
+  --pink: #FF85A1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background: var(--dark);
+  color: var(--white);
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Type badge colors */
+.type-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-right: 3px;
+
+  &.normal   { background: rgba(168,168,120,.18); color: #A8A878; border: 1px solid rgba(168,168,120,.35); }
+  &.fire     { background: rgba(240,128,48,.18);  color: #F08030; border: 1px solid rgba(240,128,48,.35); }
+  &.water    { background: rgba(104,144,240,.18); color: #6890F0; border: 1px solid rgba(104,144,240,.35); }
+  &.electric { background: rgba(248,208,48,.18);  color: #F8D030; border: 1px solid rgba(248,208,48,.35); }
+  &.grass    { background: rgba(120,200,80,.18);  color: #78C850; border: 1px solid rgba(120,200,80,.35); }
+  &.ice      { background: rgba(152,216,216,.18); color: #98D8D8; border: 1px solid rgba(152,216,216,.35); }
+  &.fighting { background: rgba(192,48,40,.18);   color: #C03028; border: 1px solid rgba(192,48,40,.35); }
+  &.poison   { background: rgba(160,64,160,.18);  color: #A040A0; border: 1px solid rgba(160,64,160,.35); }
+  &.ground   { background: rgba(224,192,104,.18); color: #E0C068; border: 1px solid rgba(224,192,104,.35); }
+  &.flying   { background: rgba(168,144,240,.18); color: #A890F0; border: 1px solid rgba(168,144,240,.35); }
+  &.psychic  { background: rgba(248,88,136,.18);  color: #F85888; border: 1px solid rgba(248,88,136,.35); }
+  &.bug      { background: rgba(168,184,32,.18);  color: #A8B820; border: 1px solid rgba(168,184,32,.35); }
+  &.rock     { background: rgba(184,160,56,.18);  color: #B8A038; border: 1px solid rgba(184,160,56,.35); }
+  &.ghost    { background: rgba(112,88,152,.18);  color: #705898; border: 1px solid rgba(112,88,152,.35); }
+  &.dragon   { background: rgba(112,56,248,.18);  color: #7038F8; border: 1px solid rgba(112,56,248,.35); }
+  &.dark     { background: rgba(112,88,72,.18);   color: #705848; border: 1px solid rgba(112,88,72,.35); }
+  &.steel    { background: rgba(184,184,208,.18); color: #B8B8D0; border: 1px solid rgba(184,184,208,.35); }
+  &.fairy    { background: rgba(238,153,172,.18); color: #EE99AC; border: 1px solid rgba(238,153,172,.35); }
+}
+
+audio {
+  width: 100%;
+  margin-top: 4px;
+  filter: invert(0.85) hue-rotate(180deg);
+  border-radius: 20px;
+}

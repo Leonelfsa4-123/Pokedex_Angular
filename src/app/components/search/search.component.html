@@ -1,0 +1,36 @@
+<div class="search-page">
+  <div class="logo">Pokédex</div>
+  <p class="subtitle">Busca tu Pokémon favorito</p>
+
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input
+      class="search-input"
+      type="text"
+      placeholder="Escribe el nombre del Pokémon..."
+      autocomplete="off"
+      [ngModel]="query()"
+      (ngModelChange)="onInput($event)"
+      (blur)="closeDropdown()"
+    />
+
+    @if (showDropdown()) {
+      <div class="results-list">
+        @if (loadingResults()) {
+          <div class="loading-hint">Cargando...</div>
+        } @else {
+          @for (item of results(); track item.id) {
+            <div class="result-item" (mousedown)="select(item.name)">
+              <img class="result-thumb" [src]="item.img" [alt]="item.name" />
+              <div class="result-info">
+                <span class="result-num">#{{ padId(item.id) }}</span>
+                <span class="result-name">{{ item.name }}</span>
+              </div>
+              <span class="arrow">›</span>
+            </div>
+          }
+        }
+      </div>
+    }
+  </div>
+</div>
